@@ -24,4 +24,4 @@ post "/lingr" do |r, param|
   ret
 end
 
-Sinatic.run :port => 5003
+Sinatic.run :port => 8888
