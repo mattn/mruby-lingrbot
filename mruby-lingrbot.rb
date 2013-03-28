@@ -53,13 +53,13 @@ post "/lingr" do |r, param|
     if e["message"] && e["message"]["text"]
       cmd, msg = e["message"]["text"].split(" ", 2)
       ret = case cmd
-	  when '!mruby'
+      when '!mruby'
         sandbox_eval msg
-	  when '!issue'
+      when '!issue'
         issue msg
-	  when '!weather'
+      when '!weather'
         weather msg
-	  else
+      else
         ''
       end
     end
