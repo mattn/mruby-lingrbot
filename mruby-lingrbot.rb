@@ -42,6 +42,10 @@ def weather(area)
   json['message']
 end
 
+def matz
+  "http://api.twitter.com/1/users/profile_image/yukihiro_matz.png\n呼んだ？"
+end
+
 get "/lingr" do |r, param|
   "ワシもmrubyじゃ"
 end
@@ -59,6 +63,8 @@ post "/lingr" do |r, param|
         issue msg
       when '!weather'
         weather msg
+      when '!matz'
+        matz
       else
         ''
       end
