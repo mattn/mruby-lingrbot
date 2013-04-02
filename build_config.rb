@@ -2,6 +2,7 @@ MRuby::Build.new do |conf|
   toolchain :gcc
 
   conf.gem "#{root}/mrbgems/mruby-sprintf"
+  conf.gem "#{root}/mrbgems/mruby-print"
   conf.gem "#{root}/mrbgems/mruby-math"
   conf.gem "#{root}/mrbgems/mruby-time"
   conf.gem "#{root}/mrbgems/mruby-struct"
@@ -20,4 +21,5 @@ MRuby::Build.new do |conf|
   conf.gem :git => 'https://github.com/mattn/mruby-sandbox.git'
   conf.gem :git => 'https://github.com/mattn/mruby-curl.git'
   #conf.gem :git => 'https://github.com/mattn/mruby-pcre-regexp'
+  conf.gem :git => 'https://github.com/mattn/mruby-updategems'
 end
