@@ -1,20 +1,21 @@
 #!mruby
 
-sb = nil
-
-def restart_sandbox
-  sb = Sandbox.new
-  sb.eval "def method_missing(*x, &b); 'http://file.mmametal.blog.shinobi.jp/Mirko_CroCop01.jpg'; end"
-  sb
-end
-
-def sandbox_eval(expr)
-  unless expr
-    sb = restart_sandbox
-    return 'mruby_bot sandbox restarted'
+class EvalBot
+  @sb = nil
+  def initialize
+    restart
   end
-  sb = restart_sandbox unless sb
-  sb.eval expr
+  def eval expr
+    unless expr
+      restart
+      return 'mruby_bot sandbox restarted'
+    end
+    @sb.eval expr
+  end
+  def restart
+    @sb = Sandbox.new
+    @sb.eval "def method_missing(*x, &b); 'http://file.mmametal.blog.shinobi.jp/Mirko_CroCop01.jpg'; end"
+  end
 end
 
 def issue(id)
@@ -46,6 +47,8 @@ def matz
   "http://api.twitter.com/1/users/profile_image/yukihiro_matz.png\n呼んだ？"
 end
 
+sb = EvalBot.new
+
 get "/lingr" do |r, param|
   "ワシもmrubyじゃ"
 end
@@ -58,7 +61,7 @@ post "/lingr" do |r, param|
       cmd, msg = e["message"]["text"].split(" ", 2)
       ret = case cmd
       when '!mruby'
-        sandbox_eval msg
+        sb.eval msg
       when '!issue'
         issue msg
       when '!weather'
