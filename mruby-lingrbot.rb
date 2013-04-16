@@ -49,11 +49,11 @@ end
 
 sb = EvalBot.new
 
-get "/lingr" do |r, param|
+get "/" do |r, param|
   "ワシもmrubyじゃ"
 end
 
-post "/lingr" do |r, param|
+post "/" do |r, param|
   json = JSON.parse r.body
   ret = ''
   json["events"].each do |e|
