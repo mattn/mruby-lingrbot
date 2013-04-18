@@ -68,6 +68,8 @@ post "/" do |r, param|
         weather msg
       when '!matz'
         matz
+      when '!copyright'
+        "Icon is designed by h2so5: https://github.com/h2so5/mruby-logo"
       else
         ''
       end
